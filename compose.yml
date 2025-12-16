@@ -1,0 +1,14 @@
+services:
+  puppygraph:
+    image: puppygraph/puppygraph:stable
+    ports:
+      - "8081:8081"
+      - "18182:8182"
+      - "17687:7687"
+    environment:
+      - PUPPYGRAPH_PASSWORD=puppygraph123
+      - QUERY_TIMEOUT=5m
+      - STORAGE_PATH_ROOT=/data/storage
+    volumes:
+      - ./storage:/data/storage
+    restart: always
