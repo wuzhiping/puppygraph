@@ -12,3 +12,12 @@ services:
     volumes:
       - ./storage:/data/storage
     restart: always
+
+  mcp:
+    image: shawoo/puppygraph-mcp
+    restart: always
+    command: uv sync && uv run jupyter lab --allow-root --ip=0.0.0.0 --NotebookApp.token='12345678'
+    ports:
+      - "15010:8888"
+    volumes:
+      - ./src:/app/src
